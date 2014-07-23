@@ -1,7 +1,8 @@
 library(shiny)
 
 #' @export
-datetimeInput <- function(inputId, label, min=NULL, max=NULL) {
+datetimeInput <- function(inputId, label, value, min=NULL, max=NULL) {
+    value <- if (inherits(value, c('POSIXct', 'POSIXlt', 'Date'))) format(value, '%Y-%m-%d %H:%M') else value
     tagList(
         singleton(tags$head(tags$script(src="roow/jquery-ui-1.10.4.min.js")))
         ,singleton(tags$head(tags$link(href="roow/jquery-ui.css", rel='stylesheet', type='text/css')))
@@ -9,7 +10,7 @@ datetimeInput <- function(inputId, label, min=NULL, max=NULL) {
         ,singleton(tags$head(tags$script(src="roow/timepicker/timepicker_bindings.js")))
         ,singleton(tags$head(tags$link(href="roow/timepicker/jquery-ui-timepicker-addon.css", rel='stylesheet', type='text/css')))
         ,tags$label(class="control-label", `for`=inputId, label)
-        ,tags$input(type='text', id=inputId, class='shiny-datetime-input')
+        ,tags$input(type='text', id=inputId, class='shiny-datetime-input', value=value)
         ,tags$script(sprintf("$(function() {$('#%s').datetimepicker(
             {minDate: '%s', maxDate: '%s', changeMonth: true, changeYear: true, showButtonPanel: true}
         )})", inputId, min, max))
@@ -19,7 +20,7 @@ datetimeInput <- function(inputId, label, min=NULL, max=NULL) {
 
 test <- function() {
     ui <- fluidPage(
-        datetimeInput('dtime_input', 'datetime input', min='1/1/1999', max='1/2/1999'),
+        datetimeInput('dtime_input', 'datetime input', min='1/1/1999', max='1/2/1999', value='1/2/1999'),
         textOutput('text_out')
     )
 
