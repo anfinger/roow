@@ -1410,6 +1410,7 @@
 	$.datepicker._updateDatepicker = function (inst) {
 
 		// don't popup the datepicker if there is another instance already opened
+        console.log(inst);
 		var input = inst.input[0];
 		if ($.datepicker._curInst && $.datepicker._curInst !== inst && $.datepicker._datepickerShowing && $.datepicker._lastInput !== input) {
 			return;
