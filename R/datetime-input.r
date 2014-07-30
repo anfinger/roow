@@ -17,31 +17,31 @@ datetimeInput <- function(inputId, label, value, min=NULL, max=NULL) {
     )
 }
 
-#library(devtools)
-#install_github('roow', 'oow') # install the package with the datetimeInput widget
-#
-#library(shiny)
-#library(roow)
-#
-#test <- function(include_dateInput=FALSE) {
-#    ui <- fluidPage(
-#        if (include_dateInput) dateInput('date_input', 'date input', value='1/1/1999') else div(),
-#        datetimeInput('dtime_input', 'datetime input', min='1/1/1999', max='1/2/1999', value='1/2/1999'),
-#        textOutput('text_out')
-#    )
-#    server <- function(input, output, session) {
-#        output$text_out <- renderText({
-#            input$dtime_input
-#        })
-#    }
-#    runApp(list(ui=ui, server=server))
-#}
-#
-#test() # datetimeInput works fine
-#test(TRUE) # datetimeInput doesn't work. If you are in Chrome, you can view the error message with Ctrl+Shit+J
-#
-#In jquery-ui-timepicker-addon.js I've included a call to console.log right before the error is encountered to show that is in fact the dateInput element that is causing the error
-#
+library(devtools)
+install_github('roow', 'oow') # install the package with the datetimeInput widget
+
+library(shiny)
+library(roow)
+
+test <- function(include_dateInput=FALSE) {
+   ui <- fluidPage(
+       if (include_dateInput) dateInput('date_input', 'date input', value='1/1/1999') else div(),
+       datetimeInput('dtime_input', 'datetime input', min='1/1/1999', max='1/2/1999', value='1/2/1999'),
+       textOutput('text_out')
+   )
+   server <- function(input, output, session) {
+       output$text_out <- renderText({
+           input$dtime_input
+       })
+   }
+   runApp(list(ui=ui, server=server))
+}
+
+test() # datetimeInput works fine
+test(TRUE) # datetimeInput doesn't work. If you are in Chrome, you can view the error message with Ctrl+Shit+J
+
+In jquery-ui-timepicker-addon.js I've included a call to console.log right before the error is encountered to show that is in fact the dateInput element that is causing the error
+
 
 
 
