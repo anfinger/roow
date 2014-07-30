@@ -2,8 +2,7 @@ library(shiny)
 
 #' @export
 customsliderInput <- function (inputId, label, min, max, value, step = NULL, round = FALSE, 
-          format = "#,##0.#####", locale = "us", ticks = TRUE, animate = FALSE) 
-{
+          format = "#,##0.#####", locale = "us", ticks = TRUE, animate = FALSE){
     if (identical(animate, TRUE)) 
         animate <- animationOptions()
     if (!is.null(animate) && !identical(animate, FALSE)) {
@@ -12,7 +11,6 @@ customsliderInput <- function (inputId, label, min, max, value, step = NULL, rou
         if (is.null(animate$pauseButton)) 
             animate$pauseButton <- tags$i(class = "icon-pause")
     }
-    value <- if (inherits(value, c('POSIXct','POSIXlt', 'Date'))) format(value, '%Y-%m-%d %H:%M') else value
     tags$div(id="valuelist", value)
     tags$div(tagList(controlLabel(inputId, label), slider(inputId, 
                                                           min = min, max = max, value = value, step = step, round = round, 
