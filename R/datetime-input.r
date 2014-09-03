@@ -17,11 +17,11 @@ datetimeInput <- function(inputId, label, value, min=NULL, max=NULL) {
     )
 }
 
-library(devtools)
-install_github('roow', 'oow') # install the package with the datetimeInput widget
+#library(devtools)
+#install_github('roow', 'oow') # install the package with the datetimeInput widget
 
-library(shiny)
-library(roow)
+#library(shiny)
+#library(roow)
 
 test <- function(include_dateInput=FALSE) {
    ui <- fluidPage(
