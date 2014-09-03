@@ -19,10 +19,10 @@ customsliderInput <- function (inputId, label, min, max, value, step = NULL, rou
         ,tags$div(id="valuelist",class = 'slider-container', value)
     )
 }
-library(devtools)
+#library(devtools)
 # install_github('roow', 'oow') # install the package with the datetimeInput widget
-library(shiny)
-library(roow)
+#library(shiny)
+#library(roow)
 
 test <- function(include_dateInput=FALSE) {
     ui <- fluidPage(
