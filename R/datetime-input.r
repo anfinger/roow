@@ -40,7 +40,7 @@ test <- function(include_dateInput=FALSE) {
 test() # datetimeInput works fine
 test(TRUE) # datetimeInput doesn't work. If you are in Chrome, you can view the error message with Ctrl+Shit+J
 
-In jquery-ui-timepicker-addon.js I've included a call to console.log right before the error is encountered to show that is in fact the dateInput element that is causing the error
+#In jquery-ui-timepicker-addon.js I've included a call to console.log right before the error is encountered to show that is in fact the dateInput element that is causing the error
 
 
 
